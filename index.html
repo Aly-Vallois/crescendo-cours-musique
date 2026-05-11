@@ -5,8 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Crescendo - Cours de musique</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
   <style>
     :root {
       --noir: #050301;
@@ -14,29 +12,24 @@
       --cuivre: #c47a43;
       --or: #f0c08a;
       --beige: #fff1df;
-      --texte: #2d2d2d;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      font-family: 'Poppins', sans-serif;
+      font-family: Arial, sans-serif;
       background: var(--noir);
       color: var(--beige);
       line-height: 1.6;
     }
 
     header {
+      background: rgba(5,3,1,0.95);
+      padding: 16px 8%;
+      border-bottom: 1px solid var(--or);
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(5, 3, 1, 0.95);
-      padding: 16px 8%;
-      border-bottom: 1px solid rgba(240, 192, 138, 0.25);
     }
 
     nav {
@@ -45,228 +38,199 @@
       align-items: center;
     }
 
-    .logo {
-      font-size: 1.8rem;
-      font-weight: 700;
+    .logo-text {
       color: var(--or);
-      letter-spacing: 1px;
+      font-size: 1.7rem;
+      font-weight: bold;
     }
 
     .nav-links {
       display: flex;
-      gap: 25px;
+      gap: 20px;
       list-style: none;
     }
 
     .nav-links a {
       color: var(--beige);
       text-decoration: none;
-      font-weight: 500;
-    }
-
-    .nav-links a:hover {
-      color: var(--or);
     }
 
     .hero {
-      min-height: 90vh;
-      background:
-        linear-gradient(rgba(5,3,1,0.75), rgba(5,3,1,0.95)),
-        radial-gradient(circle at center, #c47a43 0%, #1b0f08 45%, #050301 100%);
+      min-height: 85vh;
       text-align: center;
-      padding: 120px 8% 90px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .hero-content {
-      max-width: 900px;
+      padding: 100px 8%;
+      background:
+        linear-gradient(rgba(5,3,1,0.82), rgba(5,3,1,0.96)),
+        radial-gradient(circle, var(--cuivre), var(--brun), var(--noir));
     }
 
     .hero-logo {
-      max-width: 260px;
-      width: 70%;
-      margin-bottom: 25px;
+      max-width: 240px;
       border-radius: 50%;
-      box-shadow: 0 0 40px rgba(196, 122, 67, 0.45);
+      margin-bottom: 25px;
     }
 
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 20px;
-      color: var(--or);
-    }
+    h1, h2, h3 { color: var(--or); }
 
-    .hero p {
-      font-size: 1.2rem;
-      margin-bottom: 35px;
-      color: var(--beige);
-    }
+    h1 { font-size: 2.8rem; margin-bottom: 20px; }
+    h2 { text-align: center; font-size: 2.2rem; margin-bottom: 35px; }
+
+    section { padding: 70px 8%; }
+
+    .light { background: #120904; }
 
     .btn {
       display: inline-block;
       background: linear-gradient(135deg, var(--cuivre), var(--or));
       color: var(--noir);
-      text-decoration: none;
-      padding: 15px 35px;
+      padding: 14px 28px;
       border-radius: 40px;
-      font-weight: 700;
+      text-decoration: none;
+      font-weight: bold;
       border: none;
       cursor: pointer;
-      box-shadow: 0 8px 25px rgba(196, 122, 67, 0.35);
-    }
-
-    .btn:hover {
-      transform: translateY(-3px);
-    }
-
-    section {
-      padding: 80px 8%;
-    }
-
-    h2 {
-      text-align: center;
-      font-size: 2.4rem;
-      margin-bottom: 45px;
-      color: var(--or);
-    }
-
-    .intro {
-      max-width: 900px;
-      margin: auto;
-      text-align: center;
-      font-size: 1.1rem;
-      color: var(--beige);
-    }
-
-    .light {
-      background: #120904;
+      margin-top: 20px;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 25px;
     }
 
     .card {
       background: linear-gradient(145deg, #1b0f08, #080402);
-      padding: 30px;
-      border-radius: 22px;
-      border: 1px solid rgba(240, 192, 138, 0.2);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
-      transition: 0.3s;
+      padding: 25px;
+      border-radius: 20px;
+      border: 1px solid rgba(240,192,138,0.25);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.35);
     }
 
-    .card:hover {
-      transform: translateY(-6px);
-      border-color: var(--cuivre);
-    }
+    .icon { font-size: 2.4rem; margin-bottom: 12px; }
 
-    .card h3 {
-      margin-bottom: 12px;
-      color: var(--or);
-      font-size: 1.3rem;
-    }
-
-    .card p {
-      color: var(--beige);
-    }
-
-    .icon {
-      font-size: 2.8rem;
+    .video-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 15px;
       margin-bottom: 15px;
+      background: #2a160b;
     }
 
     .price {
       font-size: 2rem;
-      font-weight: 700;
-      margin: 15px 0;
+      font-weight: bold;
       color: var(--or);
+      margin: 10px 0;
     }
 
-    .featured {
-      background: linear-gradient(135deg, #c47a43, #1b0f08);
-      transform: scale(1.03);
-    }
-
-    .featured h3,
-    .featured .price,
-    .featured p {
-      color: white;
+    .half {
+      background: rgba(196,122,67,0.35);
+      padding: 10px;
+      border-radius: 12px;
+      margin-top: 10px;
+      font-weight: bold;
     }
 
     .contact {
-      background:
-        linear-gradient(rgba(5,3,1,0.88), rgba(5,3,1,0.95)),
-        radial-gradient(circle at center, #c47a43 0%, #1b0f08 45%, #050301 100%);
       text-align: center;
-    }
-
-    .contact h2 {
-      color: var(--or);
+      background:
+        linear-gradient(rgba(5,3,1,0.88), rgba(5,3,1,0.96)),
+        radial-gradient(circle, var(--cuivre), var(--brun), var(--noir));
     }
 
     form {
       max-width: 650px;
       margin: auto;
       display: grid;
-      gap: 15px;
+      gap: 14px;
     }
 
-    input,
-    textarea,
-    select {
-      width: 100%;
-      padding: 15px;
-      border: 1px solid rgba(240, 192, 138, 0.35);
-      border-radius: 12px;
+    input, textarea, select {
+      padding: 14px;
+      border-radius: 10px;
+      border: none;
       font-size: 1rem;
-      font-family: inherit;
-      background: #fff8ef;
-      color: #1b0f08;
     }
 
-    textarea {
-      min-height: 130px;
-      resize: vertical;
-    }
+    textarea { min-height: 120px; }
 
     footer {
-      background: #050301;
-      color: var(--beige);
       text-align: center;
       padding: 25px;
-      border-top: 1px solid rgba(240, 192, 138, 0.25);
+      background: #050301;
+      border-top: 1px solid rgba(240,192,138,0.25);
     }
 
-    .fade {
-      opacity: 0;
-      transform: translateY(25px);
-      transition: all 0.8s ease;
+    .admin-toggle {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 2000;
+      background: var(--or);
+      color: var(--noir);
+      border: none;
+      padding: 14px 18px;
+      border-radius: 40px;
+      font-weight: bold;
+      cursor: pointer;
     }
 
-    .fade.visible {
-      opacity: 1;
-      transform: translateY(0);
+    .admin-panel {
+      display: none;
+      position: fixed;
+      right: 20px;
+      bottom: 80px;
+      width: 340px;
+      max-height: 80vh;
+      overflow-y: auto;
+      background: #fff8ef;
+      color: #1b0f08;
+      padding: 20px;
+      border-radius: 18px;
+      z-index: 2000;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.45);
     }
+
+    .admin-panel h3 {
+      color: #1b0f08;
+      margin-bottom: 12px;
+    }
+
+    .admin-panel label {
+      display: block;
+      margin-top: 12px;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+
+    .admin-panel input,
+    .admin-panel textarea {
+      width: 100%;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .admin-panel button {
+      width: 100%;
+      margin-top: 12px;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .save { background: #c47a43; color: white; }
+    .reset { background: #333; color: white; }
 
     @media(max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
-
-      .hero h1 {
-        font-size: 2.2rem;
-      }
-
-      section {
-        padding: 60px 6%;
-      }
-
-      .hero-logo {
-        max-width: 220px;
+      .nav-links { display: none; }
+      h1 { font-size: 2rem; }
+      .admin-panel {
+        left: 10px;
+        right: 10px;
+        width: auto;
       }
     }
   </style>
@@ -276,11 +240,11 @@
 
 <header>
   <nav>
-    <div class="logo">Crescendo</div>
-
+    <div class="logo-text" id="siteName">Crescendo</div>
     <ul class="nav-links">
       <li><a href="#accueil">Accueil</a></li>
       <li><a href="#cours">Cours</a></li>
+      <li><a href="#videos">Vidéos</a></li>
       <li><a href="#tarifs">Tarifs</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -288,149 +252,100 @@
 </header>
 
 <section id="accueil" class="hero">
-  <div class="hero-content">
-
-    <img src="logo.png" alt="Logo Crescendo" class="hero-logo">
-
-    <h1>Des cours de musique accessibles, humains et motivants</h1>
-
-    <p>
-      Crescendo accompagne enfants, adolescents et adultes dans leur apprentissage musical
-      avec une approche progressive, bienveillante et adaptée à chaque élève.
-    </p>
-
-    <a href="#contact" class="btn">Demander des informations</a>
-  </div>
-</section>
-
-<section class="fade">
-  <h2>Bienvenue chez Crescendo</h2>
-
-  <p class="intro">
-    Que vous soyez débutant, en reprise ou déjà musicien, les cours sont pensés
-    pour vous aider à progresser avec plaisir, confiance et régularité.
+  <img id="logoPreview" src="" alt="Logo Crescendo" class="hero-logo" style="display:none;">
+  <h1 id="heroTitle">Des cours de musique accessibles, humains et motivants</h1>
+  <p id="heroText">
+    Crescendo accompagne enfants, adolescents et adultes avec une approche progressive,
+    bienveillante et adaptée à chaque élève.
   </p>
+  <a href="#contact" class="btn">Demander des informations</a>
 </section>
 
-<section id="cours" class="light fade">
+<section class="light">
   <h2>Les cours proposés</h2>
 
   <div class="grid">
-    <div class="card">
-      <div class="icon">🎹</div>
-      <h3>Piano</h3>
-      <p>Apprentissage des bases, lecture de notes, accords, morceaux modernes ou classiques.</p>
-    </div>
-
-    <div class="card">
-      <div class="icon">🎸</div>
-      <h3>Guitare</h3>
-      <p>Accompagnement, accords, rythme et progression adaptée à votre niveau.</p>
-    </div>
-
-    <div class="card">
-      <div class="icon">🎤</div>
-      <h3>Chant</h3>
-      <p>Respiration, justesse, confiance vocale et interprétation.</p>
-    </div>
-
-    <div class="card">
-      <div class="icon">🌺</div>
-      <h3>Ukulélé</h3>
-      <p>Instrument ludique et accessible pour apprendre rapidement accords et accompagnement.</p>
-    </div>
-
-    <div class="card">
-      <div class="icon">🎸</div>
-      <h3>Basse</h3>
-      <p>Travail du groove, du rythme et des bases essentielles pour jouer en groupe.</p>
-    </div>
-
-    <div class="card">
-      <div class="icon">🎼</div>
-      <h3>Éveil musical</h3>
-      <p>Découverte des sons, du rythme et de la créativité musicale pour les plus jeunes.</p>
-    </div>
-
-    <div class="card">
-      <div class="icon">🏫</div>
-      <h3>Interventions musicales</h3>
-      <p>Ateliers, animations et interventions possibles auprès d’associations, structures et événements.</p>
-    </div>
+    <div class="card"><div class="icon">🎹</div><h3>Piano</h3><p>Lecture, accords, rythme et morceaux adaptés.</p></div>
+    <div class="card"><div class="icon">🎸</div><h3>Guitare</h3><p>Accords, rythme, accompagnement et progression.</p></div>
+    <div class="card"><div class="icon">🎤</div><h3>Chant</h3><p>Respiration, justesse, confiance vocale.</p></div>
+    <div class="card"><div class="icon">🌺</div><h3>Ukulélé</h3><p>Instrument accessible, ludique et motivant.</p></div>
+    <div class="card"><div class="icon">🎸</div><h3>Basse</h3><p>Groove, rythme et bases techniques.</p></div>
+    <div class="card"><div class="icon">🏫</div><h3>Interventions</h3><p>Ateliers, animations et événements musicaux.</p></div>
   </div>
 </section>
 
-<section class="fade">
-  <h2>Une approche personnalisée</h2>
+<section id="videos">
+  <h2>Espaces vidéos</h2>
 
   <div class="grid">
     <div class="card">
-      <h3>À votre rythme</h3>
-      <p>Chaque élève progresse selon ses besoins, son niveau et ses objectifs.</p>
+      <img id="videoImg1" class="video-img" alt="">
+      <h3 id="videoTitle1">Parcours Piano débutant</h3>
+      <p id="videoText1">Un espace vidéo pour découvrir les bases du piano.</p>
     </div>
 
     <div class="card">
-      <h3>Sans pression</h3>
-      <p>Un cadre bienveillant pour apprendre, oser et progresser sereinement.</p>
+      <img id="videoImg2" class="video-img" alt="">
+      <h3 id="videoTitle2">Parcours Guitare & Ukulélé</h3>
+      <p id="videoText2">Accords, rythme et exercices guidés en vidéo.</p>
     </div>
 
     <div class="card">
-      <h3>Pour tous les âges</h3>
-      <p>Enfants, adolescents, adultes débutants ou en reprise musicale.</p>
+      <img id="videoImg3" class="video-img" alt="">
+      <h3 id="videoTitle3">Parcours Chant</h3>
+      <p id="videoText3">Respiration, échauffement vocal et interprétation.</p>
     </div>
   </div>
 </section>
 
-<section id="tarifs" class="light fade">
+<section id="tarifs" class="light">
   <h2>Tarifs</h2>
 
   <div class="grid">
     <div class="card">
       <h3>Premier échange</h3>
-      <div class="price">Offert</div>
-      <p>Un premier échange pour discuter de vos besoins, objectifs et disponibilités.</p>
-    </div>
-
-    <div class="card featured">
-      <h3>Packs de cours</h3>
-      <div class="price">Sur devis</div>
-      <p>Des forfaits personnalisés peuvent être proposés selon le nombre de cours souhaités.</p>
+      <div class="price" id="priceExchange">Offert</div>
+      <p>Un échange pour comprendre vos besoins et disponibilités.</p>
     </div>
 
     <div class="card">
       <h3>Cours à l’unité</h3>
-      <div class="price">50€</div>
-      <p>Tarif pour 1h de cours.<br><br>Des frais kilométriques peuvent s’ajouter selon le déplacement.</p>
+      <div class="price" id="priceUnit">50€ / h</div>
+      <p>Tarif avant avantage fiscal.</p>
+      <div class="half" id="priceHalf">Soit 25€ / h après avance immédiate*</div>
+      <p style="font-size:0.9rem; margin-top:10px;">
+        *Sous réserve d’éligibilité. Frais kilométriques possibles selon déplacement.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Packs de cours</h3>
+      <div class="price" id="pricePack">Sur devis</div>
+      <p>Packs possibles selon le nombre de cours, la fréquence et le format.</p>
     </div>
   </div>
 </section>
 
 <section id="contact" class="contact">
   <h2>Me contacter</h2>
-
-  <p style="margin-bottom:30px;">
-    Expliquez-moi votre besoin, votre niveau et l’instrument souhaité.
-  </p>
+  <p style="margin-bottom:25px;">Expliquez-moi votre besoin, votre niveau et l’instrument souhaité.</p>
 
   <form>
     <input type="text" placeholder="Votre nom" required>
     <input type="email" placeholder="Votre email" required>
     <input type="tel" placeholder="Votre téléphone">
-
     <select required>
-      <option value="">Instrument souhaité</option>
-      <option>Piano</option>
-      <option>Guitare</option>
-      <option>Chant</option>
-      <option>Ukulélé</option>
-      <option>Basse</option>
-      <option>Éveil musical</option>
+      <option value="">Votre demande</option>
+      <option>Cours de piano</option>
+      <option>Cours de guitare</option>
+      <option>Cours de chant</option>
+      <option>Cours de ukulélé</option>
+      <option>Cours de basse</option>
       <option>Intervention musicale</option>
+      <option>Parcours vidéo</option>
     </select>
-
     <textarea placeholder="Votre message" required></textarea>
-
-    <button type="submit" class="btn">Envoyer ma demande</button>
+    <button class="btn" type="submit">Envoyer ma demande</button>
   </form>
 </section>
 
@@ -438,48 +353,228 @@
   <p>© 2026 Crescendo - Cours de musique</p>
 </footer>
 
-<script>
-  const links = document.querySelectorAll('a[href^="#"]');
+<button class="admin-toggle" onclick="toggleAdmin()">Modifier le site</button>
 
-  links.forEach(link => {
+<div class="admin-panel" id="adminPanel">
+  <h3>Modifier le site</h3>
+
+  <label>Nom du site</label>
+  <input id="editSiteName" type="text">
+
+  <label>Titre principal</label>
+  <textarea id="editHeroTitle"></textarea>
+
+  <label>Texte principal</label>
+  <textarea id="editHeroText"></textarea>
+
+  <label>Couleur foncée</label>
+  <input id="editNoir" type="color">
+
+  <label>Couleur cuivre</label>
+  <input id="editCuivre" type="color">
+
+  <label>Couleur dorée</label>
+  <input id="editOr" type="color">
+
+  <label>Logo</label>
+  <input id="editLogo" type="file" accept="image/*">
+
+  <label>Prix cours unitaire</label>
+  <input id="editPriceUnit" type="text">
+
+  <label>Prix après avance immédiate</label>
+  <input id="editPriceHalf" type="text">
+
+  <label>Prix pack</label>
+  <input id="editPricePack" type="text">
+
+  <label>Image vidéo 1</label>
+  <input id="editVideoImg1" type="file" accept="image/*">
+
+  <label>Titre vidéo 1</label>
+  <input id="editVideoTitle1" type="text">
+
+  <label>Texte vidéo 1</label>
+  <textarea id="editVideoText1"></textarea>
+
+  <label>Image vidéo 2</label>
+  <input id="editVideoImg2" type="file" accept="image/*">
+
+  <label>Titre vidéo 2</label>
+  <input id="editVideoTitle2" type="text">
+
+  <label>Texte vidéo 2</label>
+  <textarea id="editVideoText2"></textarea>
+
+  <label>Image vidéo 3</label>
+  <input id="editVideoImg3" type="file" accept="image/*">
+
+  <label>Titre vidéo 3</label>
+  <input id="editVideoTitle3" type="text">
+
+  <label>Texte vidéo 3</label>
+  <textarea id="editVideoText3"></textarea>
+
+  <button class="save" onclick="saveChanges()">Sauvegarder</button>
+  <button class="reset" onclick="resetChanges()">Réinitialiser</button>
+</div>
+
+<script>
+  function toggleAdmin() {
+    const panel = document.getElementById('adminPanel');
+    panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+  }
+
+  const defaults = {
+    siteName: "Crescendo",
+    heroTitle: "Des cours de musique accessibles, humains et motivants",
+    heroText: "Crescendo accompagne enfants, adolescents et adultes avec une approche progressive, bienveillante et adaptée à chaque élève.",
+    noir: "#050301",
+    cuivre: "#c47a43",
+    or: "#f0c08a",
+    priceUnit: "50€ / h",
+    priceHalf: "Soit 25€ / h après avance immédiate*",
+    pricePack: "Sur devis",
+    videoTitle1: "Parcours Piano débutant",
+    videoText1: "Un espace vidéo pour découvrir les bases du piano.",
+    videoTitle2: "Parcours Guitare & Ukulélé",
+    videoText2: "Accords, rythme et exercices guidés en vidéo.",
+    videoTitle3: "Parcours Chant",
+    videoText3: "Respiration, échauffement vocal et interprétation."
+  };
+
+  function getData() {
+    return JSON.parse(localStorage.getItem('crescendoData')) || defaults;
+  }
+
+  function applyData() {
+    const data = getData();
+
+    document.getElementById('siteName').textContent = data.siteName;
+    document.getElementById('heroTitle').textContent = data.heroTitle;
+    document.getElementById('heroText').textContent = data.heroText;
+
+    document.documentElement.style.setProperty('--noir', data.noir);
+    document.documentElement.style.setProperty('--cuivre', data.cuivre);
+    document.documentElement.style.setProperty('--or', data.or);
+
+    document.getElementById('priceUnit').textContent = data.priceUnit;
+    document.getElementById('priceHalf').textContent = data.priceHalf;
+    document.getElementById('pricePack').textContent = data.pricePack;
+
+    document.getElementById('videoTitle1').textContent = data.videoTitle1;
+    document.getElementById('videoText1').textContent = data.videoText1;
+    document.getElementById('videoTitle2').textContent = data.videoTitle2;
+    document.getElementById('videoText2').textContent = data.videoText2;
+    document.getElementById('videoTitle3').textContent = data.videoTitle3;
+    document.getElementById('videoText3').textContent = data.videoText3;
+
+    if (data.logo) {
+      const logo = document.getElementById('logoPreview');
+      logo.src = data.logo;
+      logo.style.display = 'inline-block';
+    }
+
+    for (let i = 1; i <= 3; i++) {
+      const img = document.getElementById('videoImg' + i);
+      if (data['videoImg' + i]) {
+        img.src = data['videoImg' + i];
+      } else {
+        img.src = "https://via.placeholder.com/500x300/1b0f08/f0c08a?text=Image+vidéo";
+      }
+    }
+
+    fillAdmin(data);
+  }
+
+  function fillAdmin(data) {
+    document.getElementById('editSiteName').value = data.siteName;
+    document.getElementById('editHeroTitle').value = data.heroTitle;
+    document.getElementById('editHeroText').value = data.heroText;
+    document.getElementById('editNoir').value = data.noir;
+    document.getElementById('editCuivre').value = data.cuivre;
+    document.getElementById('editOr').value = data.or;
+    document.getElementById('editPriceUnit').value = data.priceUnit;
+    document.getElementById('editPriceHalf').value = data.priceHalf;
+    document.getElementById('editPricePack').value = data.pricePack;
+    document.getElementById('editVideoTitle1').value = data.videoTitle1;
+    document.getElementById('editVideoText1').value = data.videoText1;
+    document.getElementById('editVideoTitle2').value = data.videoTitle2;
+    document.getElementById('editVideoText2').value = data.videoText2;
+    document.getElementById('editVideoTitle3').value = data.videoTitle3;
+    document.getElementById('editVideoText3').value = data.videoText3;
+  }
+
+  function readFile(inputId) {
+    return new Promise(resolve => {
+      const input = document.getElementById(inputId);
+      if (!input.files || !input.files[0]) {
+        resolve(null);
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = e => resolve(e.target.result);
+      reader.readAsDataURL(input.files[0]);
+    });
+  }
+
+  async function saveChanges() {
+    const oldData = getData();
+
+    const logo = await readFile('editLogo');
+    const videoImg1 = await readFile('editVideoImg1');
+    const videoImg2 = await readFile('editVideoImg2');
+    const videoImg3 = await readFile('editVideoImg3');
+
+    const data = {
+      ...oldData,
+      siteName: document.getElementById('editSiteName').value,
+      heroTitle: document.getElementById('editHeroTitle').value,
+      heroText: document.getElementById('editHeroText').value,
+      noir: document.getElementById('editNoir').value,
+      cuivre: document.getElementById('editCuivre').value,
+      or: document.getElementById('editOr').value,
+      priceUnit: document.getElementById('editPriceUnit').value,
+      priceHalf: document.getElementById('editPriceHalf').value,
+      pricePack: document.getElementById('editPricePack').value,
+      videoTitle1: document.getElementById('editVideoTitle1').value,
+      videoText1: document.getElementById('editVideoText1').value,
+      videoTitle2: document.getElementById('editVideoTitle2').value,
+      videoText2: document.getElementById('editVideoText2').value,
+      videoTitle3: document.getElementById('editVideoTitle3').value,
+      videoText3: document.getElementById('editVideoText3').value,
+      logo: logo || oldData.logo,
+      videoImg1: videoImg1 || oldData.videoImg1,
+      videoImg2: videoImg2 || oldData.videoImg2,
+      videoImg3: videoImg3 || oldData.videoImg3
+    };
+
+    localStorage.setItem('crescendoData', JSON.stringify(data));
+    applyData();
+    alert("Modifications sauvegardées sur ce navigateur ✅");
+  }
+
+  function resetChanges() {
+    localStorage.removeItem('crescendoData');
+    location.reload();
+  }
+
+  document.querySelector('form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert("Merci pour votre message 🎵 Je vous répondrai rapidement.");
+    this.reset();
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', function(e) {
       e.preventDefault();
-
       const target = document.querySelector(this.getAttribute('href'));
-
-      if (target) {
-        target.scrollIntoView({
-          behavior: 'smooth'
-        });
-      }
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
     });
   });
 
-  const form = document.querySelector('form');
-
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    alert("Merci pour votre message 🎵 Je vous répondrai rapidement.");
-
-    form.reset();
-  });
-
-  const elements = document.querySelectorAll('.fade');
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, {
-    threshold: 0.15
-  });
-
-  elements.forEach(element => {
-    observer.observe(element);
-  });
+  applyData();
 </script>
 
 </body>
