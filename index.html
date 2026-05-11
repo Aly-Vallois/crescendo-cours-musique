@@ -1,414 +1,401 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cours de Musique - Crescendo </title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crescendo - Cours de musique</title>
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
-            color: #333;
-        }
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-        /* Header */
-        header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #2d2d2d;
+      line-height: 1.6;
+      background: #fff;
+    }
 
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-        }
+    header {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      padding: 18px 8%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+    }
 
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: opacity 0.3s;
-        }
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
 
-        .nav-links a:hover {
-            opacity: 0.8;
-        }
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+    }
 
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 120px 2rem 80px;
-            text-align: center;
-        }
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
+    .hero {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      text-align: center;
+      padding: 110px 8% 90px;
+    }
 
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
 
-        .cta-button {
-            display: inline-block;
-            background: #ff6b6b;
-            color: white;
-            padding: 15px 40px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s;
-            box-shadow: 0 5px 15px rgba(255,107,107,0.4);
-        }
+    .hero p {
+      max-width: 750px;
+      margin: 0 auto 30px;
+      font-size: 1.2rem;
+    }
 
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(255,107,107,0.6);
-        }
+    .btn {
+      display: inline-block;
+      background: #ff6b6b;
+      color: white;
+      padding: 15px 35px;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(255,107,107,0.35);
+    }
 
-        /* Sections */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
+    section {
+      padding: 80px 8%;
+    }
 
-        section {
-            padding: 80px 0;
-        }
+    h2 {
+      text-align: center;
+      font-size: 2.3rem;
+      margin-bottom: 45px;
+      color: #333;
+    }
 
-        h2 {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: #333;
-        }
+    .intro {
+      max-width: 900px;
+      margin: auto;
+      text-align: center;
+      font-size: 1.1rem;
+    }
 
-        /* Cours */
-        .courses-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+    }
 
-        .course-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            text-align: center;
-            transition: all 0.3s;
-            border-top: 4px solid transparent;
-        }
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 22px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      text-align: center;
+    }
 
-        .course-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
+    .card h3 {
+      color: #667eea;
+      margin-bottom: 12px;
+    }
 
-        .course-card.piano { border-top-color: #667eea; }
-        .course-card.guitare { border-top-color: #ff6b6b; }
-        .course-card.chant { border-top-color: #4ecdc4; }
+    .icon {
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+    }
 
-        .course-icon {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-        }
+    .light {
+      background: #f8f7ff;
+    }
 
-        /* Tarifs */
-        .pricing {
-            background: #f8f9fa;
-        }
+    .price {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #764ba2;
+      margin: 15px 0;
+    }
 
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
+    .featured {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      transform: scale(1.03);
+    }
 
-        .price-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            position: relative;
-            overflow: hidden;
-        }
+    .featured h3,
+    .featured .price {
+      color: white;
+    }
 
-        .price-card.featured {
-            transform: scale(1.05);
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
+    .contact {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      text-align: center;
+    }
 
-        .price-amount {
-            font-size: 3rem;
-            font-weight: 700;
-            margin: 1rem 0;
-        }
+    .contact h2 {
+      color: white;
+    }
 
-        /* Contact */
-        .contact {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
+    form {
+      max-width: 650px;
+      margin: auto;
+      display: grid;
+      gap: 15px;
+    }
 
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-        }
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 1rem;
+    }
 
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
+    textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
 
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 15px;
-            border: none;
-            border-radius: 10px;
-            font-size: 1rem;
-            font-family: inherit;
-        }
+    footer {
+      background: #2d2d2d;
+      color: white;
+      text-align: center;
+      padding: 25px;
+    }
 
-        .form-group textarea {
-            height: 120px;
-            resize: vertical;
-        }
+    .fade {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: all 0.8s ease;
+    }
 
-        /* Footer */
-        footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-        }
+    .fade.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
 
-            .hero h1 {
-                font-size: 2.5rem;
-            }
+      .hero h1 {
+        font-size: 2.2rem;
+      }
 
-            .courses-grid,
-            .pricing-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in {
-            animation: fadeInUp 0.8s ease-out;
-        }
-    </style>
+      section {
+        padding: 60px 6%;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <!-- Header -->
-    <header>
-        <nav>
-            <div class="logo">🎵 Musique Passion</div>
-            <ul class="nav-links">
-                <li><a href="#accueil">Accueil</a></li>
-                <li><a href="#cours">Cours</a></li>
-                <li><a href="#tarifs">Tarifs</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <!-- Hero -->
-    <section id="accueil" class="hero fade-in">
-        <div class="container">
-            <h1>Apprenez la musique avec passion !</h1>
-            <p>Des cours personnalisés pour tous les niveaux. Piano, guitare, chant et plus encore. Transformez votre passion en maîtrise.</p>
-            <a href="#contact" class="cta-button">Réserver un cours d'essai</a>
-        </div>
-    </section>
+  <header>
+    <nav>
+      <div class="logo">🎵 Crescendo</div>
+      <ul class="nav-links">
+        <li><a href="#accueil">Accueil</a></li>
+        <li><a href="#cours">Cours</a></li>
+        <li><a href="#tarifs">Tarifs</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <!-- Cours -->
-    <section id="cours" class="fade-in">
-        <div class="container">
-            <h2>Mes Cours</h2>
-            <div class="courses-grid">
-                <div class="course-card piano">
-                    <div class="course-icon">
-                        <i class="fas fa-piano-keyboard"></i>
-                    </div>
-                    <h3>Piano</h3>
-                    <p>Maîtrisez le piano du classique au jazz. Technique, improvisation et répertoire varié.</p>
-                </div>
-                <div class="course-card guitare">
-                    <div class="course-icon">
-                        <i class="fas fa-guitar"></i>
-                    </div>
-                    <h3>Guitare</h3>
-                    <p>Acoustique, électrique ou classique. Apprenez à jouer vos morceaux préférés rapidement.</p>
-                </div>
-                <div class="course-card chant">
-                    <div class="course-icon">
-                        <i class="fas fa-microphone-alt"></i>
-                    </div>
-                    <h3>Chant</h3>
-                    <p>Développez votre voix avec des techniques professionnelles. Tous styles musicaux.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+  <section id="accueil" class="hero">
+    <h1>Des cours de musique accessibles, humains et motivants</h1>
+    <p>
+      Crescendo accompagne les enfants, adolescents et adultes dans leur apprentissage musical,
+      avec une approche progressive, bienveillante et adaptée à chaque niveau.
+    </p>
+    <a href="#contact" class="btn">Demander un cours d’essai</a>
+  </section>
 
-    <!-- Tarifs -->
-    <section id="tarifs" class="pricing fade-in">
-        <div class="container">
-            <h2>Tarifs</h2>
-            <div class="pricing-grid">
-                <div class="price-card">
-                    <h3>Cours d'essai</h3>
-                    <div class="price-amount">GRATUIT</div>
-                    <p>1ère séance découverte</p>
-                    <ul style="list-style: none; padding: 0;">
-                        <li><i class="fas fa-check"></i> 45 minutes</li>
-                        <li><i class="fas fa-check"></i> Évaluation de niveau</li>
-                        <li><i class="fas fa-check"></i> Programme personnalisé</li>
-                    </ul>
-                </div>
-                <div class="price-card featured">
-                    <h3>Pack 10 cours</h3>
-                    <div class="price-amount">35€/h</div>
-                    <p>Meilleur rapport qualité/prix</p>
-                    <ul style="list-style: none; padding: 0;">
-                        <li><i class="fas fa-check"></i> 1h par cours</li>
-                        <li><i class="fas fa-check"></i> 10% de réduction</li>
-                        <li><i class="fas fa-check"></i> Planning flexible</li>
-                    </ul>
-                </div>
-                <div class="price-card">
-                    <h3>A l'unité</h3>
-                    <div class="price-amount">40€/h</div>
-                    <p>Pour commencer</p>
-                    <ul style="list-style: none; padding: 0;">
-                        <li><i class="fas fa-check"></i> 1h par cours</li>
-                        <li><i class="fas fa-check"></i> Réservation 48h</li>
-                        <li><i class="fas fa-check"></i> Annulation 24h</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
+  <section class="fade">
+    <h2>Bienvenue chez Crescendo</h2>
+    <p class="intro">
+      Que vous soyez débutant, en reprise ou déjà musicien, les cours sont pensés pour vous aider
+      à progresser avec plaisir. L’objectif : apprendre la musique sans pression, développer sa confiance
+      et avancer à son rythme.
+    </p>
+  </section>
 
-    <!-- Contact -->
-    <section id="contact" class="contact fade-in">
-        <div class="container">
-            <h2>Prêt à commencer ?</h2>
-            <form class="contact-form">
-                <div class="form-group">
-                    <input type="text" placeholder="Votre nom" required>
-                </div>
-                <div class="form-group">
-                    <input type="email" placeholder="Votre email" required>
-                </div>
-                <div class="form-group">
-                    <input type="tel" placeholder="Votre téléphone">
-                </div>
-                <div class="form-group">
-                    <textarea placeholder="Votre message - Quel instrument ? Niveau ? Objectifs ?" required></textarea>
-                </div>
-                <button type="submit" class="cta-button" style="width: 100%;">Envoyer ma demande</button>
-            </form>
-        </div>
-    </section>
+  <section id="cours" class="light fade">
+    <h2>Les cours proposés</h2>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Musique Passion. Tous droits réservés. | <a href="#" style="color: #ccc;">Mentions légales</a></p>
-        </div>
-    </footer>
+    <div class="grid">
+      <div class="card">
+        <div class="icon">🎹</div>
+        <h3>Piano</h3>
+        <p>Apprentissage des bases, lecture de notes, accords, morceaux modernes ou classiques.</p>
+      </div>
 
-    <script>
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
+      <div class="card">
+        <div class="icon">🎸</div>
+        <h3>Guitare</h3>
+        <p>Accompagnement, accords, rythme, morceaux populaires et progression adaptée.</p>
+      </div>
 
-        // Form submission
-        document.querySelector('.contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Merci pour votre message ! Je vous réponds sous 24h. 🎵');
-            this.reset();
-        });
+      <div class="card">
+        <div class="icon">🎤</div>
+        <h3>Chant</h3>
+        <p>Respiration, justesse, confiance vocale, interprétation et plaisir de chanter.</p>
+      </div>
 
-        // Fade in on scroll
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animationPlayState = 'running';
-                }
-            });
-        });
+      <div class="card">
+        <div class="icon">🎼</div>
+        <h3>Éveil musical</h3>
+        <p>Découverte du rythme, des sons et de la créativité musicale pour les plus jeunes.</p>
+      </div>
+    </div>
+  </section>
 
-        document.querySelectorAll('.fade-in').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
-            observer.observe(el);
-        });
-    </script>
+  <section class="fade">
+    <h2>Une approche simple et personnalisée</h2>
+
+    <div class="grid">
+      <div class="card">
+        <h3>À votre rythme</h3>
+        <p>Chaque élève avance selon son niveau, ses objectifs et ses disponibilités.</p>
+      </div>
+
+      <div class="card">
+        <h3>Sans pression</h3>
+        <p>Un cadre bienveillant pour apprendre, oser, se tromper et progresser.</p>
+      </div>
+
+      <div class="card">
+        <h3>Pour tous les âges</h3>
+        <p>Enfants, adolescents, adultes débutants ou en reprise musicale.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="tarifs" class="light fade">
+    <h2>Tarifs</h2>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Cours d’essai</h3>
+        <div class="price">Gratuit</div>
+        <p>Une première rencontre pour découvrir vos besoins et votre niveau.</p>
+      </div>
+
+      <div class="card featured">
+        <h3>Pack 10 cours</h3>
+        <div class="price">35€/h</div>
+        <p>Idéal pour progresser régulièrement avec un suivi personnalisé.</p>
+      </div>
+
+      <div class="card">
+        <h3>Cours à l’unité</h3>
+        <div class="price">40€/h</div>
+        <p>Une formule flexible pour commencer ou avancer ponctuellement.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Me contacter</h2>
+    <p style="margin-bottom: 30px;">
+      Expliquez-moi votre besoin, l’instrument souhaité et votre niveau.
+    </p>
+
+    <form>
+      <input type="text" placeholder="Votre nom" required>
+      <input type="email" placeholder="Votre email" required>
+      <input type="tel" placeholder="Votre téléphone">
+
+      <select required>
+        <option value="">Instrument souhaité</option>
+        <option>Piano</option>
+        <option>Guitare</option>
+        <option>Chant</option>
+        <option>Éveil musical</option>
+        <option>Autre</option>
+      </select>
+
+      <textarea placeholder="Votre message" required></textarea>
+
+      <button type="submit" class="btn">Envoyer ma demande</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2026 Crescendo - Cours de musique | Tous droits réservés</p>
+  </footer>
+
+  <script>
+    const links = document.querySelectorAll('a[href^="#"]');
+
+    links.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        const target = document.querySelector(this.getAttribute('href'));
+
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    const form = document.querySelector('form');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      alert("Merci pour votre message 🎵 Je vous répondrai rapidement.");
+
+      form.reset();
+    });
+
+    const elements = document.querySelectorAll('.fade');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.15
+    });
+
+    elements.forEach(element => {
+      observer.observe(element);
+    });
+  </script>
+
 </body>
 </html>
