@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cours de Musique - Crescendo </title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 120px 2rem 80px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #ff6b6b;
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(255,107,107,0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255,107,107,0.6);
+        }
+
+        /* Sections */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        /* Cours */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .course-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s;
+            border-top: 4px solid transparent;
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .course-card.piano { border-top-color: #667eea; }
+        .course-card.guitare { border-top-color: #ff6b6b; }
+        .course-card.chant { border-top-color: #4ecdc4; }
+
+        .course-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Tarifs */
+        .pricing {
+            background: #f8f9fa;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .price-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .price-card.featured {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .price-amount {
+            font-size: 3rem;
+            font-weight: 700;
+            margin: 1rem 0;
+        }
+
+        /* Contact */
+        .contact {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .courses-grid,
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">🎵 Musique Passion</div>
+            <ul class="nav-links">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#cours">Cours</a></li>
+                <li><a href="#tarifs">Tarifs</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section id="accueil" class="hero fade-in">
+        <div class="container">
+            <h1>Apprenez la musique avec passion !</h1>
+            <p>Des cours personnalisés pour tous les niveaux. Piano, guitare, chant et plus encore. Transformez votre passion en maîtrise.</p>
+            <a href="#contact" class="cta-button">Réserver un cours d'essai</a>
+        </div>
+    </section>
+
+    <!-- Cours -->
+    <section id="cours" class="fade-in">
+        <div class="container">
+            <h2>Mes Cours</h2>
+            <div class="courses-grid">
+                <div class="course-card piano">
+                    <div class="course-icon">
+                        <i class="fas fa-piano-keyboard"></i>
+                    </div>
+                    <h3>Piano</h3>
+                    <p>Maîtrisez le piano du classique au jazz. Technique, improvisation et répertoire varié.</p>
+                </div>
+                <div class="course-card guitare">
+                    <div class="course-icon">
+                        <i class="fas fa-guitar"></i>
+                    </div>
+                    <h3>Guitare</h3>
+                    <p>Acoustique, électrique ou classique. Apprenez à jouer vos morceaux préférés rapidement.</p>
+                </div>
+                <div class="course-card chant">
+                    <div class="course-icon">
+                        <i class="fas fa-microphone-alt"></i>
+                    </div>
+                    <h3>Chant</h3>
+                    <p>Développez votre voix avec des techniques professionnelles. Tous styles musicaux.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tarifs -->
+    <section id="tarifs" class="pricing fade-in">
+        <div class="container">
+            <h2>Tarifs</h2>
+            <div class="pricing-grid">
+                <div class="price-card">
+                    <h3>Cours d'essai</h3>
+                    <div class="price-amount">GRATUIT</div>
+                    <p>1ère séance découverte</p>
+                    <ul style="list-style: none; padding: 0;">
+                        <li><i class="fas fa-check"></i> 45 minutes</li>
+                        <li><i class="fas fa-check"></i> Évaluation de niveau</li>
+                        <li><i class="fas fa-check"></i> Programme personnalisé</li>
+                    </ul>
+                </div>
+                <div class="price-card featured">
+                    <h3>Pack 10 cours</h3>
+                    <div class="price-amount">35€/h</div>
+                    <p>Meilleur rapport qualité/prix</p>
+                    <ul style="list-style: none; padding: 0;">
+                        <li><i class="fas fa-check"></i> 1h par cours</li>
+                        <li><i class="fas fa-check"></i> 10% de réduction</li>
+                        <li><i class="fas fa-check"></i> Planning flexible</li>
+                    </ul>
+                </div>
+                <div class="price-card">
+                    <h3>A l'unité</h3>
+                    <div class="price-amount">40€/h</div>
+                    <p>Pour commencer</p>
+                    <ul style="list-style: none; padding: 0;">
+                        <li><i class="fas fa-check"></i> 1h par cours</li>
+                        <li><i class="fas fa-check"></i> Réservation 48h</li>
+                        <li><i class="fas fa-check"></i> Annulation 24h</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact fade-in">
+        <div class="container">
+            <h2>Prêt à commencer ?</h2>
+            <form class="contact-form">
+                <div class="form-group">
+                    <input type="text" placeholder="Votre nom" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Votre email" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" placeholder="Votre téléphone">
+                </div>
+                <div class="form-group">
+                    <textarea placeholder="Votre message - Quel instrument ? Niveau ? Objectifs ?" required></textarea>
+                </div>
+                <button type="submit" class="cta-button" style="width: 100%;">Envoyer ma demande</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Musique Passion. Tous droits réservés. | <a href="#" style="color: #ccc;">Mentions légales</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Form submission
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Merci pour votre message ! Je vous réponds sous 24h. 🎵');
+            this.reset();
+        });
+
+        // Fade in on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        });
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
