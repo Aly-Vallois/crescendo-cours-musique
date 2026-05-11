@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Crescendo - Cours de musique</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crescendo - Plateforme de cours de musique</title>
 
   <style>
     :root {
@@ -12,9 +12,14 @@
       --cuivre: #c47a43;
       --or: #f0c08a;
       --beige: #fff1df;
+      --blanc: #ffffff;
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     body {
       font-family: Arial, sans-serif;
@@ -24,558 +29,755 @@
     }
 
     header {
-      background: rgba(5,3,1,0.95);
-      padding: 16px 8%;
-      border-bottom: 1px solid var(--or);
       position: sticky;
       top: 0;
       z-index: 1000;
+      background: rgba(5, 3, 1, 0.96);
+      border-bottom: 1px solid rgba(240, 192, 138, 0.25);
+      padding: 14px 7%;
     }
 
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 20px;
     }
 
-    .logo-text {
+    .brand {
       color: var(--or);
-      font-size: 1.7rem;
       font-weight: bold;
+      font-size: 1.6rem;
+      letter-spacing: 0.5px;
     }
 
     .nav-links {
       display: flex;
-      gap: 20px;
+      gap: 12px;
       list-style: none;
+      flex-wrap: wrap;
+      justify-content: flex-end;
     }
 
-    .nav-links a {
+    .nav-links button {
+      background: transparent;
       color: var(--beige);
-      text-decoration: none;
+      border: 1px solid transparent;
+      padding: 9px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .nav-links button:hover,
+    .nav-links button.active {
+      color: var(--noir);
+      background: linear-gradient(135deg, var(--cuivre), var(--or));
+    }
+
+    main {
+      min-height: 80vh;
+    }
+
+    .page {
+      display: none;
+      padding: 75px 7%;
+    }
+
+    .page.active {
+      display: block;
     }
 
     .hero {
-      min-height: 85vh;
+      min-height: 82vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      padding: 100px 8%;
       background:
-        linear-gradient(rgba(5,3,1,0.82), rgba(5,3,1,0.96)),
+        linear-gradient(rgba(5, 3, 1, 0.78), rgba(5, 3, 1, 0.96)),
         radial-gradient(circle, var(--cuivre), var(--brun), var(--noir));
     }
 
-    .hero-logo {
-      max-width: 240px;
-      border-radius: 50%;
-      margin-bottom: 25px;
+    .hero-box {
+      max-width: 920px;
     }
 
-    h1, h2, h3 { color: var(--or); }
+    .logo-preview {
+      width: 210px;
+      height: 210px;
+      max-width: 70vw;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 25px;
+      border: 1px solid rgba(240, 192, 138, 0.4);
+      box-shadow: 0 0 40px rgba(196, 122, 67, 0.4);
+      display: none;
+    }
 
-    h1 { font-size: 2.8rem; margin-bottom: 20px; }
-    h2 { text-align: center; font-size: 2.2rem; margin-bottom: 35px; }
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.7rem);
+      color: var(--or);
+      margin-bottom: 20px;
+      line-height: 1.15;
+    }
 
-    section { padding: 70px 8%; }
+    h2 {
+      text-align: center;
+      color: var(--or);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      margin-bottom: 35px;
+    }
 
-    .light { background: #120904; }
+    h3 {
+      color: var(--or);
+      margin-bottom: 10px;
+    }
+
+    .lead {
+      font-size: 1.12rem;
+      max-width: 850px;
+      margin: 0 auto 28px;
+      color: var(--beige);
+    }
 
     .btn {
       display: inline-block;
+      border: none;
+      border-radius: 999px;
+      padding: 13px 24px;
       background: linear-gradient(135deg, var(--cuivre), var(--or));
       color: var(--noir);
-      padding: 14px 28px;
-      border-radius: 40px;
-      text-decoration: none;
       font-weight: bold;
-      border: none;
       cursor: pointer;
-      margin-top: 20px;
+      text-decoration: none;
+      margin: 7px;
+    }
+
+    .btn.secondary {
+      background: transparent;
+      color: var(--or);
+      border: 1px solid var(--or);
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 25px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 22px;
     }
 
     .card {
       background: linear-gradient(145deg, #1b0f08, #080402);
-      padding: 25px;
-      border-radius: 20px;
-      border: 1px solid rgba(240,192,138,0.25);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+      padding: 24px;
+      border-radius: 22px;
+      border: 1px solid rgba(240, 192, 138, 0.22);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
     }
 
-    .icon { font-size: 2.4rem; margin-bottom: 12px; }
-
-    .video-img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 15px;
-      margin-bottom: 15px;
-      background: #2a160b;
-    }
-
-    .price {
-      font-size: 2rem;
-      font-weight: bold;
-      color: var(--or);
-      margin: 10px 0;
-    }
-
-    .half {
-      background: rgba(196,122,67,0.35);
-      padding: 10px;
-      border-radius: 12px;
-      margin-top: 10px;
-      font-weight: bold;
-    }
-
-    .contact {
-      text-align: center;
-      background:
-        linear-gradient(rgba(5,3,1,0.88), rgba(5,3,1,0.96)),
-        radial-gradient(circle, var(--cuivre), var(--brun), var(--noir));
-    }
-
-    form {
-      max-width: 650px;
-      margin: auto;
-      display: grid;
-      gap: 14px;
-    }
-
-    input, textarea, select {
-      padding: 14px;
-      border-radius: 10px;
-      border: none;
-      font-size: 1rem;
-    }
-
-    textarea { min-height: 120px; }
-
-    footer {
-      text-align: center;
-      padding: 25px;
-      background: #050301;
-      border-top: 1px solid rgba(240,192,138,0.25);
-    }
-
-    .admin-toggle {
-      position: fixed;
-      right: 20px;
-      bottom: 20px;
-      z-index: 2000;
-      background: var(--or);
-      color: var(--noir);
-      border: none;
-      padding: 14px 18px;
-      border-radius: 40px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .admin-panel {
-      display: none;
-      position: fixed;
-      right: 20px;
-      bottom: 80px;
-      width: 340px;
-      max-height: 80vh;
-      overflow-y: auto;
+    .card.light-card {
       background: #fff8ef;
       color: #1b0f08;
-      padding: 20px;
-      border-radius: 18px;
-      z-index: 2000;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.45);
     }
 
-    .admin-panel h3 {
-      color: #1b0f08;
+    .card.light-card h3 {
+      color: #8e4f25;
+    }
+
+    .icon {
+      font-size: 2.3rem;
       margin-bottom: 12px;
     }
 
-    .admin-panel label {
-      display: block;
-      margin-top: 12px;
-      font-weight: bold;
+    .tag {
+      display: inline-block;
+      background: rgba(196, 122, 67, 0.28);
+      color: var(--beige);
+      border: 1px solid rgba(240, 192, 138, 0.28);
+      padding: 7px 11px;
+      border-radius: 999px;
       font-size: 0.9rem;
+      margin: 6px 6px 0 0;
     }
 
-    .admin-panel input,
-    .admin-panel textarea {
-      width: 100%;
-      margin-top: 5px;
-      border: 1px solid #ccc;
-    }
-
-    .admin-panel button {
-      width: 100%;
-      margin-top: 12px;
-      padding: 12px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
+    .price {
+      color: var(--or);
+      font-size: 2rem;
       font-weight: bold;
+      margin: 8px 0 12px;
     }
 
-    .save { background: #c47a43; color: white; }
-    .reset { background: #333; color: white; }
+    .video-img {
+      width: 100%;
+      height: 175px;
+      object-fit: cover;
+      border-radius: 16px;
+      background: #2a160b;
+      margin-bottom: 15px;
+      border: 1px solid rgba(240, 192, 138, 0.25);
+    }
 
-    @media(max-width: 768px) {
-      .nav-links { display: none; }
-      h1 { font-size: 2rem; }
-      .admin-panel {
-        left: 10px;
-        right: 10px;
-        width: auto;
+    .progress-bar {
+      height: 11px;
+      background: rgba(255, 241, 223, 0.18);
+      border-radius: 999px;
+      overflow: hidden;
+      margin: 12px 0;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 35%;
+      background: linear-gradient(135deg, var(--cuivre), var(--or));
+    }
+
+    .lesson-list {
+      list-style: none;
+      margin-top: 12px;
+    }
+
+    .lesson-list li {
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(240, 192, 138, 0.18);
+    }
+
+    .discussion-box {
+      max-width: 850px;
+      margin: auto;
+    }
+
+    .message {
+      padding: 16px;
+      border-radius: 18px;
+      margin-bottom: 13px;
+      max-width: 82%;
+    }
+
+    .message.prof {
+      background: #fff8ef;
+      color: #1b0f08;
+    }
+
+    .message.student {
+      background: rgba(196, 122, 67, 0.38);
+      margin-left: auto;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid rgba(240, 192, 138, 0.35);
+      border-radius: 13px;
+      font: inherit;
+      background: #fff8ef;
+      color: #1b0f08;
+      margin-top: 7px;
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-top: 12px;
+    }
+
+    .admin-panel {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 22px;
+    }
+
+    .admin-card {
+      background: #fff8ef;
+      color: #1b0f08;
+      padding: 22px;
+      border-radius: 20px;
+    }
+
+    .admin-card h3 {
+      color: #8e4f25;
+    }
+
+    .tiny {
+      font-size: 0.88rem;
+      opacity: 0.85;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px 7%;
+      background: #050301;
+      border-top: 1px solid rgba(240, 192, 138, 0.25);
+    }
+
+    @media (max-width: 820px) {
+      nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+      }
+
+      .page {
+        padding: 55px 5%;
       }
     }
   </style>
 </head>
 
 <body>
+  <header>
+    <nav>
+      <div class="brand" id="siteName">Crescendo</div>
+      <ul class="nav-links">
+        <li><button class="tab active" data-page="accueil">Accueil</button></li>
+        <li><button class="tab" data-page="cours">Cours</button></li>
+        <li><button class="tab" data-page="videos">Vidéos</button></li>
+        <li><button class="tab" data-page="eleve">Espace élève</button></li>
+        <li><button class="tab" data-page="discussion">Discussion</button></li>
+        <li><button class="tab" data-page="admin">Admin</button></li>
+      </ul>
+    </nav>
+  </header>
 
-<header>
-  <nav>
-    <div class="logo-text" id="siteName">Crescendo</div>
-    <ul class="nav-links">
-      <li><a href="#accueil">Accueil</a></li>
-      <li><a href="#cours">Cours</a></li>
-      <li><a href="#videos">Vidéos</a></li>
-      <li><a href="#tarifs">Tarifs</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-</header>
+  <main>
+    <section id="accueil" class="page hero active">
+      <div class="hero-box">
+        <img id="logoPreview" class="logo-preview" alt="Logo Crescendo" />
+        <h1 id="heroTitle">Cours de musique, accompagnement et parcours vidéos</h1>
+        <p class="lead" id="heroText">
+          Crescendo accompagne enfants, adolescents et adultes avec une approche humaine, progressive et motivante.
+        </p>
+        <button class="btn" onclick="openPage('cours')">Voir les cours</button>
+        <button class="btn secondary" onclick="openPage('eleve')">Découvrir l’espace élève</button>
+      </div>
+    </section>
 
-<section id="accueil" class="hero">
-  <img id="logoPreview" src="" alt="Logo Crescendo" class="hero-logo" style="display:none;">
-  <h1 id="heroTitle">Des cours de musique accessibles, humains et motivants</h1>
-  <p id="heroText">
-    Crescendo accompagne enfants, adolescents et adultes avec une approche progressive,
-    bienveillante et adaptée à chaque élève.
-  </p>
-  <a href="#contact" class="btn">Demander des informations</a>
-</section>
+    <section id="cours" class="page">
+      <h2>Catalogue de cours</h2>
+      <p class="lead">Les cours sont proposés à domicile, à distance ou sous forme d’interventions selon les besoins.</p>
 
-<section class="light">
-  <h2>Les cours proposés</h2>
+      <div class="grid" id="courseGrid"></div>
+    </section>
 
-  <div class="grid">
-    <div class="card"><div class="icon">🎹</div><h3>Piano</h3><p>Lecture, accords, rythme et morceaux adaptés.</p></div>
-    <div class="card"><div class="icon">🎸</div><h3>Guitare</h3><p>Accords, rythme, accompagnement et progression.</p></div>
-    <div class="card"><div class="icon">🎤</div><h3>Chant</h3><p>Respiration, justesse, confiance vocale.</p></div>
-    <div class="card"><div class="icon">🌺</div><h3>Ukulélé</h3><p>Instrument accessible, ludique et motivant.</p></div>
-    <div class="card"><div class="icon">🎸</div><h3>Basse</h3><p>Groove, rythme et bases techniques.</p></div>
-    <div class="card"><div class="icon">🏫</div><h3>Interventions</h3><p>Ateliers, animations et événements musicaux.</p></div>
-  </div>
-</section>
+    <section id="videos" class="page">
+      <h2>Parcours vidéos</h2>
+      <p class="lead">Ajoutez vos propres images et présentez vos futurs parcours vidéos directement depuis l’onglet Admin.</p>
 
-<section id="videos">
-  <h2>Espaces vidéos</h2>
+      <div class="grid" id="videoGrid"></div>
+    </section>
 
-  <div class="grid">
-    <div class="card">
-      <img id="videoImg1" class="video-img" alt="">
-      <h3 id="videoTitle1">Parcours Piano débutant</h3>
-      <p id="videoText1">Un espace vidéo pour découvrir les bases du piano.</p>
-    </div>
+    <section id="eleve" class="page">
+      <h2>Espace élève</h2>
+      <p class="lead">Prototype visuel : plus tard, cet espace pourra devenir un vrai compte élève avec connexion, progression et accès aux contenus.</p>
 
-    <div class="card">
-      <img id="videoImg2" class="video-img" alt="">
-      <h3 id="videoTitle2">Parcours Guitare & Ukulélé</h3>
-      <p id="videoText2">Accords, rythme et exercices guidés en vidéo.</p>
-    </div>
+      <div class="grid">
+        <div class="card">
+          <h3>Bienvenue dans votre espace</h3>
+          <p id="studentWelcome">Retrouvez ici vos parcours, vos exercices et les informations importantes.</p>
+          <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+          <p><strong id="progressText">Progression : 35%</strong></p>
+        </div>
 
-    <div class="card">
-      <img id="videoImg3" class="video-img" alt="">
-      <h3 id="videoTitle3">Parcours Chant</h3>
-      <p id="videoText3">Respiration, échauffement vocal et interprétation.</p>
-    </div>
-  </div>
-</section>
+        <div class="card">
+          <h3>Mes prochains objectifs</h3>
+          <ul class="lesson-list" id="studentGoals">
+            <li>🎹 Travailler les accords de base</li>
+            <li>🎵 Revoir le rythme de la semaine</li>
+            <li>🎤 Préparer un morceau simple</li>
+          </ul>
+        </div>
 
-<section id="tarifs" class="light">
-  <h2>Tarifs</h2>
+        <div class="card">
+          <h3>Documents</h3>
+          <p>Zone prévue pour ajouter plus tard des PDF, partitions, fiches exercices et supports de cours.</p>
+          <span class="tag">PDF</span>
+          <span class="tag">Partitions</span>
+          <span class="tag">Exercices</span>
+        </div>
+      </div>
+    </section>
 
-  <div class="grid">
-    <div class="card">
-      <h3>Premier échange</h3>
-      <div class="price" id="priceExchange">Offert</div>
-      <p>Un échange pour comprendre vos besoins et disponibilités.</p>
-    </div>
+    <section id="discussion" class="page">
+      <h2>Discussion</h2>
+      <p class="lead">Prototype de messagerie. Les messages sont gardés sur ce navigateur.</p>
 
-    <div class="card">
-      <h3>Cours à l’unité</h3>
-      <div class="price" id="priceUnit">50€ / h</div>
-      <p>Tarif avant avantage fiscal.</p>
-      <div class="half" id="priceHalf">Soit 25€ / h après avance immédiate*</div>
-      <p style="font-size:0.9rem; margin-top:10px;">
-        *Sous réserve d’éligibilité. Frais kilométriques possibles selon déplacement.
-      </p>
-    </div>
+      <div class="discussion-box">
+        <div id="messages"></div>
 
-    <div class="card">
-      <h3>Packs de cours</h3>
-      <div class="price" id="pricePack">Sur devis</div>
-      <p>Packs possibles selon le nombre de cours, la fréquence et le format.</p>
-    </div>
-  </div>
-</section>
+        <div class="card">
+          <label>Votre message</label>
+          <textarea id="newMessage" placeholder="Écrivez un message..."></textarea>
+          <button class="btn" onclick="sendMessage()">Envoyer</button>
+          <button class="btn secondary" onclick="clearMessages()">Vider la discussion</button>
+        </div>
+      </div>
+    </section>
 
-<section id="contact" class="contact">
-  <h2>Me contacter</h2>
-  <p style="margin-bottom:25px;">Expliquez-moi votre besoin, votre niveau et l’instrument souhaité.</p>
+    <section id="admin" class="page">
+      <h2>Admin simple</h2>
+      <p class="lead">Modifiez les contenus, images, couleurs et tarifs. Les changements sont sauvegardés sur ce navigateur.</p>
 
-  <form>
-    <input type="text" placeholder="Votre nom" required>
-    <input type="email" placeholder="Votre email" required>
-    <input type="tel" placeholder="Votre téléphone">
-    <select required>
-      <option value="">Votre demande</option>
-      <option>Cours de piano</option>
-      <option>Cours de guitare</option>
-      <option>Cours de chant</option>
-      <option>Cours de ukulélé</option>
-      <option>Cours de basse</option>
-      <option>Intervention musicale</option>
-      <option>Parcours vidéo</option>
-    </select>
-    <textarea placeholder="Votre message" required></textarea>
-    <button class="btn" type="submit">Envoyer ma demande</button>
-  </form>
-</section>
+      <div class="admin-panel">
+        <div class="admin-card">
+          <h3>Identité du site</h3>
+          <label>Nom du site</label>
+          <input id="editSiteName" type="text" />
 
-<footer>
-  <p>© 2026 Crescendo - Cours de musique</p>
-</footer>
+          <label>Titre d’accueil</label>
+          <textarea id="editHeroTitle"></textarea>
 
-<button class="admin-toggle" onclick="toggleAdmin()">Modifier le site</button>
+          <label>Texte d’accueil</label>
+          <textarea id="editHeroText"></textarea>
 
-<div class="admin-panel" id="adminPanel">
-  <h3>Modifier le site</h3>
+          <label>Logo</label>
+          <input id="editLogo" type="file" accept="image/*" />
+        </div>
 
-  <label>Nom du site</label>
-  <input id="editSiteName" type="text">
+        <div class="admin-card">
+          <h3>Couleurs</h3>
+          <label>Fond principal</label>
+          <input id="editNoir" type="color" />
 
-  <label>Titre principal</label>
-  <textarea id="editHeroTitle"></textarea>
+          <label>Couleur cuivre</label>
+          <input id="editCuivre" type="color" />
 
-  <label>Texte principal</label>
-  <textarea id="editHeroText"></textarea>
+          <label>Couleur dorée</label>
+          <input id="editOr" type="color" />
+        </div>
 
-  <label>Couleur foncée</label>
-  <input id="editNoir" type="color">
+        <div class="admin-card">
+          <h3>Tarifs visibles</h3>
+          <p class="tiny">Ici, on affiche seulement le prix réduit avec avance immédiate.</p>
 
-  <label>Couleur cuivre</label>
-  <input id="editCuivre" type="color">
+          <label>Prix cours unitaire réduit</label>
+          <input id="editReducedPrice" type="text" />
 
-  <label>Couleur dorée</label>
-  <input id="editOr" type="color">
+          <label>Texte tarifaire</label>
+          <textarea id="editPriceNote"></textarea>
 
-  <label>Logo</label>
-  <input id="editLogo" type="file" accept="image/*">
+          <label>Prix pack</label>
+          <input id="editPackPrice" type="text" />
+        </div>
 
-  <label>Prix cours unitaire</label>
-  <input id="editPriceUnit" type="text">
+        <div class="admin-card">
+          <h3>Espace élève</h3>
+          <label>Message d’accueil élève</label>
+          <textarea id="editStudentWelcome"></textarea>
 
-  <label>Prix après avance immédiate</label>
-  <input id="editPriceHalf" type="text">
+          <label>Progression en %</label>
+          <input id="editProgress" type="number" min="0" max="100" />
+        </div>
 
-  <label>Prix pack</label>
-  <input id="editPricePack" type="text">
+        <div class="admin-card">
+          <h3>Parcours vidéo 1</h3>
+          <label>Titre</label>
+          <input id="editVideoTitle1" type="text" />
+          <label>Description</label>
+          <textarea id="editVideoText1"></textarea>
+          <label>Image</label>
+          <input id="editVideoImg1" type="file" accept="image/*" />
+        </div>
 
-  <label>Image vidéo 1</label>
-  <input id="editVideoImg1" type="file" accept="image/*">
+        <div class="admin-card">
+          <h3>Parcours vidéo 2</h3>
+          <label>Titre</label>
+          <input id="editVideoTitle2" type="text" />
+          <label>Description</label>
+          <textarea id="editVideoText2"></textarea>
+          <label>Image</label>
+          <input id="editVideoImg2" type="file" accept="image/*" />
+        </div>
 
-  <label>Titre vidéo 1</label>
-  <input id="editVideoTitle1" type="text">
+        <div class="admin-card">
+          <h3>Parcours vidéo 3</h3>
+          <label>Titre</label>
+          <input id="editVideoTitle3" type="text" />
+          <label>Description</label>
+          <textarea id="editVideoText3"></textarea>
+          <label>Image</label>
+          <input id="editVideoImg3" type="file" accept="image/*" />
+        </div>
 
-  <label>Texte vidéo 1</label>
-  <textarea id="editVideoText1"></textarea>
+        <div class="admin-card">
+          <h3>Sauvegarde</h3>
+          <button class="btn" onclick="saveAdmin()">Sauvegarder les modifications</button>
+          <button class="btn secondary" onclick="resetSite()">Réinitialiser le site</button>
+          <p class="tiny">Pour rendre ces changements visibles à tous les visiteurs, il faudra ensuite connecter une vraie base de données ou un CMS.</p>
+        </div>
+      </div>
+    </section>
+  </main>
 
-  <label>Image vidéo 2</label>
-  <input id="editVideoImg2" type="file" accept="image/*">
+  <footer>
+    <p>© 2026 Crescendo - Cours de musique</p>
+  </footer>
 
-  <label>Titre vidéo 2</label>
-  <input id="editVideoTitle2" type="text">
-
-  <label>Texte vidéo 2</label>
-  <textarea id="editVideoText2"></textarea>
-
-  <label>Image vidéo 3</label>
-  <input id="editVideoImg3" type="file" accept="image/*">
-
-  <label>Titre vidéo 3</label>
-  <input id="editVideoTitle3" type="text">
-
-  <label>Texte vidéo 3</label>
-  <textarea id="editVideoText3"></textarea>
-
-  <button class="save" onclick="saveChanges()">Sauvegarder</button>
-  <button class="reset" onclick="resetChanges()">Réinitialiser</button>
-</div>
-
-<script>
-  function toggleAdmin() {
-    const panel = document.getElementById('adminPanel');
-    panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
-  }
-
-  const defaults = {
-    siteName: "Crescendo",
-    heroTitle: "Des cours de musique accessibles, humains et motivants",
-    heroText: "Crescendo accompagne enfants, adolescents et adultes avec une approche progressive, bienveillante et adaptée à chaque élève.",
-    noir: "#050301",
-    cuivre: "#c47a43",
-    or: "#f0c08a",
-    priceUnit: "50€ / h",
-    priceHalf: "Soit 25€ / h après avance immédiate*",
-    pricePack: "Sur devis",
-    videoTitle1: "Parcours Piano débutant",
-    videoText1: "Un espace vidéo pour découvrir les bases du piano.",
-    videoTitle2: "Parcours Guitare & Ukulélé",
-    videoText2: "Accords, rythme et exercices guidés en vidéo.",
-    videoTitle3: "Parcours Chant",
-    videoText3: "Respiration, échauffement vocal et interprétation."
-  };
-
-  function getData() {
-    return JSON.parse(localStorage.getItem('crescendoData')) || defaults;
-  }
-
-  function applyData() {
-    const data = getData();
-
-    document.getElementById('siteName').textContent = data.siteName;
-    document.getElementById('heroTitle').textContent = data.heroTitle;
-    document.getElementById('heroText').textContent = data.heroText;
-
-    document.documentElement.style.setProperty('--noir', data.noir);
-    document.documentElement.style.setProperty('--cuivre', data.cuivre);
-    document.documentElement.style.setProperty('--or', data.or);
-
-    document.getElementById('priceUnit').textContent = data.priceUnit;
-    document.getElementById('priceHalf').textContent = data.priceHalf;
-    document.getElementById('pricePack').textContent = data.pricePack;
-
-    document.getElementById('videoTitle1').textContent = data.videoTitle1;
-    document.getElementById('videoText1').textContent = data.videoText1;
-    document.getElementById('videoTitle2').textContent = data.videoTitle2;
-    document.getElementById('videoText2').textContent = data.videoText2;
-    document.getElementById('videoTitle3').textContent = data.videoTitle3;
-    document.getElementById('videoText3').textContent = data.videoText3;
-
-    if (data.logo) {
-      const logo = document.getElementById('logoPreview');
-      logo.src = data.logo;
-      logo.style.display = 'inline-block';
-    }
-
-    for (let i = 1; i <= 3; i++) {
-      const img = document.getElementById('videoImg' + i);
-      if (data['videoImg' + i]) {
-        img.src = data['videoImg' + i];
-      } else {
-        img.src = "https://via.placeholder.com/500x300/1b0f08/f0c08a?text=Image+vidéo";
-      }
-    }
-
-    fillAdmin(data);
-  }
-
-  function fillAdmin(data) {
-    document.getElementById('editSiteName').value = data.siteName;
-    document.getElementById('editHeroTitle').value = data.heroTitle;
-    document.getElementById('editHeroText').value = data.heroText;
-    document.getElementById('editNoir').value = data.noir;
-    document.getElementById('editCuivre').value = data.cuivre;
-    document.getElementById('editOr').value = data.or;
-    document.getElementById('editPriceUnit').value = data.priceUnit;
-    document.getElementById('editPriceHalf').value = data.priceHalf;
-    document.getElementById('editPricePack').value = data.pricePack;
-    document.getElementById('editVideoTitle1').value = data.videoTitle1;
-    document.getElementById('editVideoText1').value = data.videoText1;
-    document.getElementById('editVideoTitle2').value = data.videoTitle2;
-    document.getElementById('editVideoText2').value = data.videoText2;
-    document.getElementById('editVideoTitle3').value = data.videoTitle3;
-    document.getElementById('editVideoText3').value = data.videoText3;
-  }
-
-  function readFile(inputId) {
-    return new Promise(resolve => {
-      const input = document.getElementById(inputId);
-      if (!input.files || !input.files[0]) {
-        resolve(null);
-        return;
-      }
-
-      const reader = new FileReader();
-      reader.onload = e => resolve(e.target.result);
-      reader.readAsDataURL(input.files[0]);
-    });
-  }
-
-  async function saveChanges() {
-    const oldData = getData();
-
-    const logo = await readFile('editLogo');
-    const videoImg1 = await readFile('editVideoImg1');
-    const videoImg2 = await readFile('editVideoImg2');
-    const videoImg3 = await readFile('editVideoImg3');
-
-    const data = {
-      ...oldData,
-      siteName: document.getElementById('editSiteName').value,
-      heroTitle: document.getElementById('editHeroTitle').value,
-      heroText: document.getElementById('editHeroText').value,
-      noir: document.getElementById('editNoir').value,
-      cuivre: document.getElementById('editCuivre').value,
-      or: document.getElementById('editOr').value,
-      priceUnit: document.getElementById('editPriceUnit').value,
-      priceHalf: document.getElementById('editPriceHalf').value,
-      pricePack: document.getElementById('editPricePack').value,
-      videoTitle1: document.getElementById('editVideoTitle1').value,
-      videoText1: document.getElementById('editVideoText1').value,
-      videoTitle2: document.getElementById('editVideoTitle2').value,
-      videoText2: document.getElementById('editVideoText2').value,
-      videoTitle3: document.getElementById('editVideoTitle3').value,
-      videoText3: document.getElementById('editVideoText3').value,
-      logo: logo || oldData.logo,
-      videoImg1: videoImg1 || oldData.videoImg1,
-      videoImg2: videoImg2 || oldData.videoImg2,
-      videoImg3: videoImg3 || oldData.videoImg3
+  <script>
+    const defaults = {
+      siteName: 'Crescendo',
+      heroTitle: 'Cours de musique, accompagnement et parcours vidéos',
+      heroText: 'Crescendo accompagne enfants, adolescents et adultes avec une approche humaine, progressive et motivante.',
+      noir: '#050301',
+      cuivre: '#c47a43',
+      or: '#f0c08a',
+      reducedPrice: '25€ / h',
+      priceNote: 'Prix affiché après avance immédiate, sous réserve d’éligibilité. Des frais kilométriques peuvent s’ajouter selon le déplacement.',
+      packPrice: 'Sur devis',
+      studentWelcome: 'Retrouvez ici vos parcours, vos exercices et les informations importantes.',
+      progress: 35,
+      videos: [
+        {
+          title: 'Parcours Piano débutant',
+          text: 'Bases du piano, posture, notes, rythme et premiers morceaux.',
+          image: ''
+        },
+        {
+          title: 'Parcours Guitare & Ukulélé',
+          text: 'Accords, rythme, accompagnement et exercices progressifs.',
+          image: ''
+        },
+        {
+          title: 'Parcours Chant',
+          text: 'Respiration, échauffement vocal, justesse et confiance.',
+          image: ''
+        }
+      ],
+      courses: [
+        { icon: '🎹', title: 'Piano', text: 'Lecture, accords, rythme, accompagnement et morceaux adaptés.' },
+        { icon: '🎸', title: 'Guitare', text: 'Accords, rythme, accompagnement et progression personnalisée.' },
+        { icon: '🎤', title: 'Chant', text: 'Respiration, justesse, confiance vocale et interprétation.' },
+        { icon: '🌺', title: 'Ukulélé', text: 'Instrument accessible, ludique et motivant.' },
+        { icon: '🎸', title: 'Basse', text: 'Groove, rythme et bases techniques pour jouer en groupe.' },
+        { icon: '🏫', title: 'Interventions musicales', text: 'Ateliers, animations, associations, structures et événements.' }
+      ]
     };
 
-    localStorage.setItem('crescendoData', JSON.stringify(data));
-    applyData();
-    alert("Modifications sauvegardées sur ce navigateur ✅");
-  }
+    function getData() {
+      return JSON.parse(localStorage.getItem('crescendoPlatformData')) || defaults;
+    }
 
-  function resetChanges() {
-    localStorage.removeItem('crescendoData');
-    location.reload();
-  }
+    function setData(data) {
+      localStorage.setItem('crescendoPlatformData', JSON.stringify(data));
+    }
 
-  document.querySelector('form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    alert("Merci pour votre message 🎵 Je vous répondrai rapidement.");
-    this.reset();
-  });
+    function openPage(pageId) {
+      document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+      document.getElementById(pageId).classList.add('active');
 
-  document.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) target.scrollIntoView({ behavior: 'smooth' });
+      document.querySelectorAll('.tab').forEach(tab => {
+        tab.classList.toggle('active', tab.dataset.page === pageId);
+      });
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', () => openPage(tab.dataset.page));
     });
-  });
 
-  applyData();
-</script>
+    function placeholder(text) {
+      return 'https://via.placeholder.com/600x350/1b0f08/f0c08a?text=' + encodeURIComponent(text);
+    }
 
+    function applyData() {
+      const data = getData();
+
+      document.getElementById('siteName').textContent = data.siteName;
+      document.getElementById('heroTitle').textContent = data.heroTitle;
+      document.getElementById('heroText').textContent = data.heroText;
+
+      document.documentElement.style.setProperty('--noir', data.noir);
+      document.documentElement.style.setProperty('--cuivre', data.cuivre);
+      document.documentElement.style.setProperty('--or', data.or);
+
+      const logo = document.getElementById('logoPreview');
+      if (data.logo) {
+        logo.src = data.logo;
+        logo.style.display = 'inline-block';
+      }
+
+      renderCourses(data);
+      renderVideos(data);
+      renderStudent(data);
+      fillAdmin(data);
+      renderMessages();
+    }
+
+    function renderCourses(data) {
+      const grid = document.getElementById('courseGrid');
+      grid.innerHTML = '';
+
+      data.courses.forEach(course => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          <div class="icon">${course.icon}</div>
+          <h3>${course.title}</h3>
+          <p>${course.text}</p>
+          <div class="price">${data.reducedPrice}</div>
+          <p class="tiny">${data.priceNote}</p>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function renderVideos(data) {
+      const grid = document.getElementById('videoGrid');
+      grid.innerHTML = '';
+
+      data.videos.forEach((video, index) => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          <img class="video-img" src="${video.image || placeholder('Parcours vidéo')}" alt="${video.title}">
+          <h3>${video.title}</h3>
+          <p>${video.text}</p>
+          <span class="tag">Parcours ${index + 1}</span>
+          <span class="tag">Accès élève</span>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function renderStudent(data) {
+      document.getElementById('studentWelcome').textContent = data.studentWelcome;
+      document.getElementById('progressText').textContent = 'Progression : ' + data.progress + '%';
+      document.getElementById('progressFill').style.width = data.progress + '%';
+    }
+
+    function fillAdmin(data) {
+      document.getElementById('editSiteName').value = data.siteName;
+      document.getElementById('editHeroTitle').value = data.heroTitle;
+      document.getElementById('editHeroText').value = data.heroText;
+      document.getElementById('editNoir').value = data.noir;
+      document.getElementById('editCuivre').value = data.cuivre;
+      document.getElementById('editOr').value = data.or;
+      document.getElementById('editReducedPrice').value = data.reducedPrice;
+      document.getElementById('editPriceNote').value = data.priceNote;
+      document.getElementById('editPackPrice').value = data.packPrice;
+      document.getElementById('editStudentWelcome').value = data.studentWelcome;
+      document.getElementById('editProgress').value = data.progress;
+
+      data.videos.forEach((video, i) => {
+        document.getElementById('editVideoTitle' + (i + 1)).value = video.title;
+        document.getElementById('editVideoText' + (i + 1)).value = video.text;
+      });
+    }
+
+    function readFile(inputId) {
+      return new Promise(resolve => {
+        const input = document.getElementById(inputId);
+        if (!input.files || !input.files[0]) {
+          resolve(null);
+          return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = event => resolve(event.target.result);
+        reader.readAsDataURL(input.files[0]);
+      });
+    }
+
+    async function saveAdmin() {
+      const oldData = getData();
+      const logo = await readFile('editLogo');
+      const videoImg1 = await readFile('editVideoImg1');
+      const videoImg2 = await readFile('editVideoImg2');
+      const videoImg3 = await readFile('editVideoImg3');
+
+      const data = {
+        ...oldData,
+        siteName: document.getElementById('editSiteName').value,
+        heroTitle: document.getElementById('editHeroTitle').value,
+        heroText: document.getElementById('editHeroText').value,
+        noir: document.getElementById('editNoir').value,
+        cuivre: document.getElementById('editCuivre').value,
+        or: document.getElementById('editOr').value,
+        reducedPrice: document.getElementById('editReducedPrice').value,
+        priceNote: document.getElementById('editPriceNote').value,
+        packPrice: document.getElementById('editPackPrice').value,
+        studentWelcome: document.getElementById('editStudentWelcome').value,
+        progress: Number(document.getElementById('editProgress').value || 0),
+        logo: logo || oldData.logo,
+        videos: [
+          {
+            title: document.getElementById('editVideoTitle1').value,
+            text: document.getElementById('editVideoText1').value,
+            image: videoImg1 || oldData.videos[0].image
+          },
+          {
+            title: document.getElementById('editVideoTitle2').value,
+            text: document.getElementById('editVideoText2').value,
+            image: videoImg2 || oldData.videos[1].image
+          },
+          {
+            title: document.getElementById('editVideoTitle3').value,
+            text: document.getElementById('editVideoText3').value,
+            image: videoImg3 || oldData.videos[2].image
+          }
+        ]
+      };
+
+      setData(data);
+      applyData();
+      alert('Modifications sauvegardées sur ce navigateur ✅');
+    }
+
+    function resetSite() {
+      localStorage.removeItem('crescendoPlatformData');
+      location.reload();
+    }
+
+    function getMessages() {
+      return JSON.parse(localStorage.getItem('crescendoMessages')) || [
+        { type: 'prof', text: 'Bienvenue dans la discussion Crescendo 🎵' },
+        { type: 'prof', text: 'Vous pouvez poser une question sur un cours, un exercice ou un parcours vidéo.' }
+      ];
+    }
+
+    function setMessages(messages) {
+      localStorage.setItem('crescendoMessages', JSON.stringify(messages));
+    }
+
+    function renderMessages() {
+      const box = document.getElementById('messages');
+      const messages = getMessages();
+      box.innerHTML = '';
+
+      messages.forEach(message => {
+        const div = document.createElement('div');
+        div.className = 'message ' + message.type;
+        div.textContent = message.text;
+        box.appendChild(div);
+      });
+    }
+
+    function sendMessage() {
+      const textarea = document.getElementById('newMessage');
+      const text = textarea.value.trim();
+      if (!text) return;
+
+      const messages = getMessages();
+      messages.push({ type: 'student', text });
+      setMessages(messages);
+      textarea.value = '';
+      renderMessages();
+    }
+
+    function clearMessages() {
+      localStorage.removeItem('crescendoMessages');
+      renderMessages();
+    }
+
+    applyData();
+  </script>
 </body>
 </html>
